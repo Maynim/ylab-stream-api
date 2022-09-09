@@ -112,7 +112,16 @@ public class ComplexExamples {
                 Value:1
          */
 
+        Map<String, Integer> namesakeSortedMap = Util.getNamesakeCountMap(RAW_DATA);
 
+        if (namesakeSortedMap.isEmpty()){
+            System.out.println("Array of Person is null or empty");
+        } else {
+            namesakeSortedMap.forEach((name, count) -> {
+                System.out.println("Key: " + name);
+                System.out.println("Value: " + count);
+            });
+        }
 
         /*
         Task2
@@ -120,7 +129,26 @@ public class ComplexExamples {
             [3, 4, 2, 7], 10 -> [3, 7] - вывести пару менно в скобках, которые дают сумму - 10
          */
 
+        System.out.println();
+        System.out.println("**************************************************");
+        System.out.println();
 
+        int[] array = {3, 4, 2, 7};
+        int expectedSum = 10;
+
+        System.out.println("Input array: " + Arrays.toString(array));
+        System.out.println("Expected sum: " + expectedSum);
+        System.out.println();
+
+        System.out.print("Pair: ");
+
+        Pair<Integer, Integer> pair = Util.findFirstPair(array, expectedSum);
+
+        switch (pair.status) {
+            case EMPTY -> System.out.println("Input array is null");
+            case NOT_FOUND -> System.out.println("Pair missing from array");
+            case FOUND -> System.out.printf("[%d, %d] \n", pair.firstValue, pair.secondValue);
+        }
 
         /*
         Task3
@@ -132,5 +160,19 @@ public class ComplexExamples {
                     fuzzySearch("cwheeel", "cartwheel"); // false
                     fuzzySearch("lw", "cartwheel"); // false
          */
+
+        System.out.println();
+        System.out.println("**************************************************");
+        System.out.println();
+
+        String word = "cwheeel";
+        String text = "cartwheel";
+
+        System.out.println("Search word: " + word);
+        System.out.println("Text: " + text);
+        System.out.println();
+
+        System.out.println("Result search: " + Util.fuzzySearch(word, text));
+
     }
 }
