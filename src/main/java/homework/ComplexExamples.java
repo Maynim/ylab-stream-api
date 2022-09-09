@@ -112,7 +112,16 @@ public class ComplexExamples {
                 Value:1
          */
 
+        Map<String, Integer> namesakeSortedMap = Util.getNamesakeCountMap(RAW_DATA);
 
+        if (namesakeSortedMap.isEmpty()){
+            System.out.println("Array of Person is null or empty");
+        } else {
+            namesakeSortedMap.forEach((name, count) -> {
+                System.out.println("Key: " + name);
+                System.out.println("Value: " + count);
+            });
+        }
 
         /*
         Task2
