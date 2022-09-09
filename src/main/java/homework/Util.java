@@ -2,8 +2,7 @@ package homework;
 
 import java.util.*;
 
-import static homework.Status.EMPTY;
-import static homework.Status.NOT_FOUND;
+import static homework.Status.*;
 
 public class Util {
 
@@ -38,5 +37,26 @@ public class Util {
         }
 
         return new Pair<>(NOT_FOUND);
+    }
+
+    public static boolean fuzzySearch(String word, String text) {
+        if (word == null || text == null){
+            return false;
+        }
+
+        String[] wordArr = word.split("");
+        String[] textArr = text.split("");
+
+        int textMarker = 0;
+        int wordMarker = 0;
+
+        while (textMarker != textArr.length - 1 && wordMarker != wordArr.length - 1) {
+            if (Objects.equals(wordArr[wordMarker], textArr[textMarker])) {
+                wordMarker++;
+            }
+            textMarker++;
+        }
+
+        return wordMarker == wordArr.length - 1;
     }
 }

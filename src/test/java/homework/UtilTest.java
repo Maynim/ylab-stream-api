@@ -92,4 +92,36 @@ class UtilTest {
         }
     }
 
+    @Nested
+    @DisplayName("Tests for Task 3")
+    class ThirdTaskTest {
+
+        @Test
+        void returnFalseWhenSomeArgumentIsNull() {
+            assertAll(
+                    () -> assertFalse(Util.fuzzySearch(null, null)),
+                    () -> assertFalse(Util.fuzzySearch("some text", null)),
+                    () -> assertFalse(Util.fuzzySearch(null, "some text"))
+            );
+        }
+
+        @Test
+        void returnFalseWhenWordIsNotInText() {
+            assertAll(
+                    () -> assertFalse(Util.fuzzySearch("cwheeel", "cartwheel")),
+                    () -> assertFalse(Util.fuzzySearch("lw", "cartwheel"))
+            );
+        }
+
+        @Test
+        void returnTrueWhenWordIsInText() {
+            assertAll(
+                    () -> assertTrue(Util.fuzzySearch("car", "ca6$$#_rtwheel")),
+                    () -> assertTrue(Util.fuzzySearch("car", "ca6$$#_rtwheel")),
+                    () -> assertTrue(Util.fuzzySearch("cwhl", "cartwheel")),
+                    () -> assertTrue(Util.fuzzySearch("cwhee", "cartwheel")),
+                    () -> assertTrue(Util.fuzzySearch("cartwheel", "cartwheel"))
+            );
+        }
+    }
 }

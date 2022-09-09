@@ -138,6 +138,7 @@ public class ComplexExamples {
 
         System.out.println("Input array: " + Arrays.toString(array));
         System.out.println("Expected sum: " + expectedSum);
+        System.out.println();
 
         System.out.print("Pair: ");
 
@@ -159,5 +160,19 @@ public class ComplexExamples {
                     fuzzySearch("cwheeel", "cartwheel"); // false
                     fuzzySearch("lw", "cartwheel"); // false
          */
+
+        System.out.println();
+        System.out.println("**************************************************");
+        System.out.println();
+
+        String word = "cwheeel";
+        String text = "cartwheel";
+
+        System.out.println("Search word: " + word);
+        System.out.println("Text: " + text);
+        System.out.println();
+
+        System.out.println("Result search: " + Util.fuzzySearch(word, text));
+
     }
 }
