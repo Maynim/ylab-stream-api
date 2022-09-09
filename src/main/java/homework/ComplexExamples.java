@@ -129,7 +129,25 @@ public class ComplexExamples {
             [3, 4, 2, 7], 10 -> [3, 7] - вывести пару менно в скобках, которые дают сумму - 10
          */
 
+        System.out.println();
+        System.out.println("**************************************************");
+        System.out.println();
 
+        int[] array = {3, 4, 2, 7};
+        int expectedSum = 10;
+
+        System.out.println("Input array: " + Arrays.toString(array));
+        System.out.println("Expected sum: " + expectedSum);
+
+        System.out.print("Pair: ");
+
+        Pair<Integer, Integer> pair = Util.findFirstPair(array, expectedSum);
+
+        switch (pair.status) {
+            case EMPTY -> System.out.println("Input array is null");
+            case NOT_FOUND -> System.out.println("Pair missing from array");
+            case FOUND -> System.out.printf("[%d, %d] \n", pair.firstValue, pair.secondValue);
+        }
 
         /*
         Task3
